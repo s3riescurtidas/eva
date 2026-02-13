@@ -342,6 +342,81 @@ header h1 {
     transform: scale(1.1);
 }
 
+/* --- ESTILO DA MENSAGEM (MODAL) --- */
+.modal {
+    display: none; /* Escondido por defeito */
+    position: fixed;
+    z-index: 1000; /* Ficar por cima de tudo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro transparente */
+    backdrop-filter: blur(2px); /* Ligeiro desfoque no fundo */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transform: scale(0.7);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+/* O texto da mensagem */
+.modal-content p {
+    font-family: 'Montserrat', sans-serif; /* Fonte normal */
+    font-size: 1.1rem;
+    color: #000; /* Preto */
+    line-height: 1.6;
+    text-align: center;
+    margin: 0;
+}
+
+/* O botão X para fechar */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #d65a6f; /* Fica rosa quando passa o rato */
+}
+
+/* Cursor de ponteiro nas imagens clicáveis */
+.photo-card img[onclick] {
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+
+.photo-card img[onclick]:hover {
+    filter: brightness(0.9);
+}
+
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
     40% {transform: translateY(-10px);}
@@ -354,6 +429,7 @@ header h1 {
     #timer { gap: 15px; }
     .time-box span { font-size: 2rem; }
 }
+
 
 
 
