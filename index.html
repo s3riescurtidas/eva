@@ -65,50 +65,60 @@
 
         <div class="gallery">
             <div class="photo-card">
-                <img src="1.jpg" alt="Foto 1">
+                <img src="2.jpg" alt="Foto 1" onclick="verMensagem('Lembro-me tão bem deste dia, estava muito nervoso mas feliz! ❤️')">
                 <div class="caption">
-                    <h3>Um dia ai fixe</h3>
-                    <p>ya nao sei a data</p>
+                    <h3>Primeira foto nossa juntos📸</h3>
+                    <p>29 de Dezembro de 2024</p>
+                    <p style="border-radius: 500px; color: rgb(255, 255, 255); background-color: rgba(214, 90, 111);">Clica aqui!</p>
                 </div>
             </div>
 
             <div class="photo-card">
-                <img src="2.JPG" alt="Foto 2">
+                <img src="1 (1).JPG" alt="Foto 2">
                 <div class="caption">
-                    <h3>Outro dia ai fixe</h3>
-                    <p>20 de Agosto de 2023</p>
+                    <h3>Segunda foto nossa juntos🖼️</h3>
+                    <p>29 de Dezembro de 2024</p>
                 </div>
             </div>
 
             <div class="photo-card">
-                <img src="2 (2).JPG" alt="Foto 2">
+                <img src="3.JPG" alt="Foto 2" onclick="verMensagem('Lembro-me tão bem deste dia, estava muito nervoso mas feliz! ❤️')">
                 <div class="caption">
-                    <h3>Outro dia ai fixe</h3>
-                    <p>20 de Agosto de 2023</p>
+                    <h3>Dia do nosso primeiro kiss💋</h3>
+                    <p>01 de Janeiro de 2025</p>
+                    <p style="border-radius: 500px; color: rgb(255, 255, 255); background-color: rgba(214, 90, 111);">Clica aqui!</p>
                 </div>
             </div>
 
             <div class="photo-card">
-                <img src="3.JPG" alt="Foto 3">
+                <img src="2 (2).JPG" alt="Foto 3">
                 <div class="caption">
-                    <h3>Um dia qualquer</h3>
-                    <p>10 de Dezembro de 2023</p>
+                    <h3>Outra cutie pic nossa do primeiro kiss😘</h3>
+                    <p>01 de Janeiro de 2025</p>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="1.JPG" alt="Foto 2">
+                <div class="caption">
+                    <h3>Primeira saida ao moinho❤️</h3>
+                    <p>03 de Janeiro de 2025</p>
                 </div>
             </div>
 
             <div class="photo-card">
                 <img src="4.JPG" alt="Foto 4">
                 <div class="caption">
-                    <h3>Um dia qualquer</h3>
-                    <p>10 de Dezembro de 2023</p>
+                    <h3>Foto fofinha nossa a ver o por do sol ao pé do moinho🛞</h3>
+                    <p>03 de Janeiro de 2025</p>
                 </div>
             </div>
 
             <div class="photo-card">
                 <img src="5.JPG" alt="Foto 5">
                 <div class="caption">
-                    <h3>Outro dia ai fixe</h3>
-                    <p>20 de Agosto de 2023</p>
+                    <h3>Outra foto fofinha nossa ao pé do moinho🛞</h3>
+                    <p>03 de Janeiro de 2025</p>
                 </div>
             </div>
 
@@ -129,7 +139,7 @@
             </div>
 
             <div class="photo-card">
-                <img src="8.JPG" alt="Foto 8">
+                <img src="8.PNG" alt="Foto 8">
                 <div class="caption">
                     <h3>Outro dia ai fixe</h3>
                     <p>20 de Agosto de 2023</p>
@@ -137,7 +147,7 @@
             </div>
 
             <div class="photo-card">
-                <img src="9.JPG" alt="Foto 9">
+                <img src="9.PNG" alt="Foto 9">
                 <div class="caption">
                     <h3>Outro dia ai fixe</h3>
                     <p>20 de Agosto de 2023</p>
@@ -228,6 +238,13 @@
 
     <div class="music-btn">
         🎵
+    </div>
+
+    <div id="message-modal" class="modal" onclick="fecharMensagem(event)">
+        <div class="modal-content">
+            <span class="close-btn" onclick="fecharMensagem(event)">&times;</span>
+            <p id="modal-text">A tua mensagem vai aparecer aqui...</p>
+        </div>
     </div>
 
     <script src="script.js"></script>
