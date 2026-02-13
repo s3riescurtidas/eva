@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o meu Amor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+    <script src="index.js"></script>
+</head>
+<body>
+
+    <section id="login-screen" class="screen active">
+        <div class="login-box">
+            <div class="heart-icon">❤️</div>
+            <h1>Verificação de Amor</h1>
+            <p>Só quem me conhece pode entrar...</p>
+            
+            <label for="password">Eu cheiro a?</label>
+            <input type="text" id="password" placeholder="Escreve aqui...">
+            
+            <button onclick="checkPassword()">Entrar 💘</button>
+            <p id="error-message">Hmm... tens a certeza? Tenta de novo.</p>
+        </div>
+    </section>
+
+    <section id="envelope-screen" class="screen">
+        <div class="envelope-wrapper" onclick="openEnvelope()">
+            <div class="front">
+                ❤️ Para Ti &nbsp❤️
+            </div>
+            <div class="envelope">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="heart-icon">❤️</div>
+                        <p>
+                            Olá meu amor,<br>
+                            Ao clicares em "continuar" aceitas o meu pedido.<br>
+                            Queres ser a minha valentina? 💘
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="click-instruction">Toca para abrir</p>
+        
+        <button id="go-to-gallery" onclick="showGallery()">Continuar ✨</button>
+    </section>
+
+    <section id="main-content" class="screen">
+        <header>
+            <h1>Os Nossos Momentos</h1>
+            <p>As nossas memórias fofinhas</p>
+        </header>
+
+        <div class="timer-container">
+            <div class="timer-title">❤️ Estamos juntos há ❤️</div>
+            <div id="timer">
+                <div class="time-box"><span id="years">0</span>Anos</div>
+                <div class="time-box"><span id="months">0</span>Meses</div>
+                <div class="time-box"><span id="days">0</span>Dias</div>
+                </div>
+        </div>
+
+        <div class="gallery">
+            <div class="photo-card">
+                <img src="assets/1.jpg" alt="Foto 1">
+                <div class="caption">
+                    <h3>Um dia ai fixe</h3>
+                    <p>ya nao sei a data</p>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="assets/2.jpg" alt="Foto 2">
+                <div class="caption">
+                    <h3>Outro dia ai fixe</h3>
+                    <p>20 de Agosto de 2023</p>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://via.placeholder.com/400x500/d65a6f/ffffff?text=Foto+3" alt="Foto 3">
+                <div class="caption">
+                    <h3>Um dia qualquer</h3>
+                    <p>10 de Dezembro de 2023</p>
+                </div>
+            </div>
+             </div>
+    </section>
+
+    <div class="music-btn">
+        🎵
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

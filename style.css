@@ -1,0 +1,356 @@
+/* RESET E VARIÁVEIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #fcf8f5; /* Creme do fundo */
+    --primary-color: #d65a6f; /* Rosa escuro / Vermelho suave */
+    --secondary-color: #e88fa2; /* Rosa claro */
+    --envelope-color: #e0c9b1; /* Cor de papel craft */
+    --text-color: #5a5a5a;
+    --font-script: 'Great Vibes', cursive;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: var(--font-body);
+    color: var(--text-color);
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* GERENCIAMENTO DE TELAS (Screens) */
+.screen {
+    display: none; /* Escondido por padrão */
+    width: 100%;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.screen.active {
+    display: flex;
+    opacity: 1;
+}
+
+/* 1. ESTILO DO LOGIN */
+.login-box {
+    background: white;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(214, 90, 111, 0.15);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.heart-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.login-box h1 {
+    font-family: var(--font-script);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.login-box p {
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    color: #888;
+}
+
+.login-box label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    outline: none;
+    font-family: var(--font-body);
+}
+
+.login-box button, #go-to-gallery {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: var(--font-script);
+    font-size: 1.5rem;
+    transition: transform 0.2s, background 0.2s;
+}
+
+#go-to-gallery{
+    position: absolute;
+    top: 60%;
+}
+
+.login-box button:hover, #go-to-gallery:hover {
+    background-color: #c0485d;
+    transform: scale(1.05);
+}
+
+#error-message {
+    color: var(--primary-color);
+    margin-top: 1rem;
+    display: none;
+}
+
+/* 2. ESTILO DO ENVELOPE */
+.front {
+    font-family: var(--font-script);
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    margin-left: 4.5rem;
+}
+
+.envelope-wrapper {
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+
+.envelope {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background-color: var(--envelope-color);
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Aba do envelope (triângulo) */
+.envelope::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 100px solid #d1bfa8; /* Cor um pouco mais escura */
+    transform-origin: top;
+    transition: transform 0.6s ease;
+    z-index: 5;
+}
+
+/* A carta dentro */
+.card {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    width: 270px;
+    height: 300px;
+    background: white;
+    border-radius: 5px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: opacity 0.2s ease 0.6s;
+}
+
+.card-content {
+    font-family: var(--font-script);
+    font-size: 1.2rem;
+    color: #555;
+    opacity: 0; /* Texto escondido inicialmente */
+    transition: opacity 0.5s ease 0.8s;
+}
+
+/* Envelope Aberto (Classe adicionada via JS) */
+.envelope-wrapper.open .envelope::before {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope-wrapper.open .card {
+    opacity: 1;
+    transform: translateY(-120px);
+    z-index: 3;
+}
+
+.envelope-wrapper.open .card-content {
+    opacity: 1;
+}
+
+.envelope-wrapper.open + .click-instruction {
+    display: none;
+}
+
+.click-instruction {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    opacity: 0.6;
+    animation: bounce 2s infinite;
+}
+
+#go-to-gallery {
+    margin-top: 50px;
+    display: none; /* Só aparece depois de abrir a carta */
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+/* 3. CONTEÚDO PRINCIPAL */
+#main-content {
+    padding: 40px 20px;
+    justify-content: flex-start; /* Alinhar ao topo */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-family: var(--font-script);
+    font-size: 3.5rem;
+    color: var(--primary-color);
+}
+
+/* Contador */
+.timer-container {
+    background: white;
+    padding: 20px 40px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.timer-title {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+#timer {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #999;
+}
+
+.time-box span {
+    font-family: var(--font-script);
+    font-size: 2.5rem;
+    color: #555;
+    line-height: 1;
+}
+
+/* Galeria */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.photo-card {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.photo-card:hover {
+    transform: translateY(-5px);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.caption {
+    padding: 15px 5px 5px;
+    text-align: center;
+}
+
+.caption h3 {
+    font-size: 1rem;
+    color: #444;
+}
+
+.caption p {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 5px;
+}
+
+/* Botão de Música */
+.music-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--primary-color);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(214, 90, 111, 0.4);
+    cursor: pointer;
+    z-index: 100;
+    transition: transform 0.2s;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+/* Responsividade Mobile */
+@media (max-width: 600px) {
+    header h1 { font-size: 2.5rem; }
+    #timer { gap: 15px; }
+    .time-box span { font-size: 2rem; }
+}
