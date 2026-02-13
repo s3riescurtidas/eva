@@ -86,4 +86,26 @@ function updateTimer() {
     document.getElementById('years').innerText = years;
     document.getElementById('months').innerText = months;
     document.getElementById('days').innerText = days;
+
+}
+
+// --- FUNÇÕES PARA AS MENSAGENS NAS FOTOS ---
+
+function verMensagem(texto) {
+    const modal = document.getElementById('message-modal');
+    const modalText = document.getElementById('modal-text');
+
+    // Define o texto que recebemos no HTML
+    modalText.innerText = texto;
+    
+    // Mostra o modal (adiciona a classe que faz o fade in)
+    modal.classList.add('show');
+}
+
+function fecharMensagem(event) {
+    // Fecha se clicar no X ou se clicar fora da caixa branca (no fundo escuro)
+    if (event.target.classList.contains('modal') || event.target.classList.contains('close-btn')) {
+        const modal = document.getElementById('message-modal');
+        modal.classList.remove('show');
+    }
 }
